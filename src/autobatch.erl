@@ -196,7 +196,7 @@ batch_execute(#state{queries    = Q,
 %% @doc For each response in the list, sends the response to the pid and
 %%      removes the query. Returns the remaining queries that didn't get any
 %%      responses. Raises an error if a response doesn't have a matching query.
--spec send_responses([{pid(), term()}], dict()) -> dict().
+-spec send_responses([{pid(), term()}], dict:dict()) -> dict:dict().
 send_responses([], Q) -> Q;
 send_responses([{Pid, Response}|Responses], Q) ->
 	dict:is_key(Pid, Q) orelse error(invalid_batch_response),
